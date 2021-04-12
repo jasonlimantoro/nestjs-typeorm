@@ -4,14 +4,10 @@ import * as request from 'supertest';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { User } from './../src/users/user.entity';
 import { UsersModule } from './../src/users/users.module';
+import { mockUserRepository } from './utils/mocks/userRepository';
 
 describe('UserController (e2e)', () => {
   let app: INestApplication;
-
-  const mockUserRepository = {
-    find: jest.fn().mockResolvedValue([]),
-    findOne: jest.fn().mockResolvedValue({}),
-  };
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
